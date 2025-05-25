@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+    body {
+        font-family: Arial, sans-serif;
+        background-color: #f4f6f8;
+        margin: 40px;
+        color: #333;
+    }
+
+    h2 {
+        text-align: center;
+        color: #2c3e50;
+    }
+
+    table {
+        width: 100%;
+        border-collapse: collapse;
+        background-color: white;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        margin-top: 20px;
+    }
+
+    th, td {
+        padding: 12px;
+        border: 1px solid #ddd;
+        text-align: center;
+    }
+
+    th {
+        background-color: #3498db;
+        color: white;
+    }
+
+    tr:nth-child(even) {
+        background-color: #f2f2f2;
+    }
+
+    a {
+        text-decoration: none;
+        color: #2980b9;
+        font-weight: bold;
+    }
+
+    a:hover {
+        color: #1c5980;
+    }
+
+    form {
+        width: 50%;
+        margin: auto;
+        background-color: white;
+        padding: 20px;
+        border-radius: 8px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+
+    form button {
+        background-color: #27ae60;
+        color: white;
+        border: none;
+        padding: 10px 20px;
+        border-radius: 4px;
+        cursor: pointer;
+        margin-top: 10px;
+    }
+
+    form button:hover {
+        background-color: #1e8449;
+    }
+
+    a[href*="agregar"], a[href*="lista"] {
+        display: inline-block;
+        margin-top: 20px;
+        text-align: center;
+    }
+</style>
+
+</head>
+<body>
+    <h2>Lista de Estudiantes</h2>
+<table border="1">
+    <tr>
+        <th>ID</th>
+        <th>Nombre</th>
+        <th>Apellido</th>
+        <th>Código</th>
+        <th>Fecha de Ingreso</th>
+        <th>Acciones</th>
+    </tr>
+    {% for est in estudiantes %}
+    <tr>
+        <td>{{ est.estu_id }}</td>
+        <td>{{ est.persona.nombre }}</td>
+        <td>{{ est.persona.apellido }}</td>
+        <td>{{ est.codigo_estudiante }}</td>
+        <td>{{ est.fecha_ingreso }}</td>
+        <td>
+            <a href="{% url 'editar_estudiante' est.estu_id %}">Editar</a> |
+            <a href="{% url 'eliminar_estudiante' est.estu_id %}">Eliminar</a>
+        </td>
+    </tr>
+    {% endfor %}
+</table>
+<a href="{% url 'agregar_estudiante' %}">Agregar nuevo estudiante</a>
+</body>
+</html>

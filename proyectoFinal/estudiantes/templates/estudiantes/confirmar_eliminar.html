@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+    body {
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        background-color: #f4f6f8;
+        margin: 40px;
+        color: #333;
+    }
+
+    h2 {
+        text-align: center;
+        color: #c0392b;
+        font-size: 28px;
+    }
+
+    p {
+        text-align: center;
+        font-size: 18px;
+        margin-bottom: 30px;
+    }
+
+    form {
+        width: 400px;
+        margin: 0 auto;
+        background-color: #ffffff;
+        padding: 30px;
+        border-radius: 10px;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        text-align: center;
+    }
+
+    form button {
+        background-color: #e74c3c;
+        color: white;
+        border: none;
+        padding: 10px 20px;
+        font-size: 16px;
+        border-radius: 6px;
+        cursor: pointer;
+        margin-right: 10px;
+        transition: background-color 0.3s ease;
+    }
+
+    form button:hover {
+        background-color: #c0392b;
+    }
+
+    a {
+        display: inline-block;
+        margin-top: 20px;
+        text-decoration: none;
+        font-weight: bold;
+        color: #2980b9;
+        transition: color 0.3s ease;
+    }
+
+    a:hover {
+        color: #1c5980;
+    }
+</style>
+
+</head>
+<body>
+    <h2>Confirmar eliminación</h2>
+<p>¿Estás seguro de que deseas eliminar al estudiante <strong>{{ estudiante.persona.nombre }} {{ estudiante.persona.apellido }}</strong> con código <strong>{{ estudiante.codigo_estudiante }}</strong>?</p>
+
+<form method="post">
+    {% csrf_token %}
+    <button type="submit">Sí, eliminar</button>
+    <a href="{% url 'lista_estudiantes' %}">Cancelar</a>
+</form>
+</body>
+</html>
+
